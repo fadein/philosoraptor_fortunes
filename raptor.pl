@@ -18,6 +18,12 @@ my $raptor = <<'RAPTOR';
 )          )           _,--x /
 RAPTOR
 
+# ROT-13 encode the Philosoraptor ASCII art for offensive fortunes file
+if (@ARGV and $ARGV[0] == '-13') {
+    ($raptor =~ tr/[a-z]/[n-za-m]/);
+    shift @ARGV;
+}
+
 my $rapWidth = max( map { length } split(/\n/, $raptor));
 
 # skip until the 1st fortune
